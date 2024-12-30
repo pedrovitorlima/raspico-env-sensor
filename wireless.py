@@ -11,6 +11,9 @@ class Network:
         self.__password = password
     
     def connect_to_wifi(self):
+        if not wifi.radio.enabled:
+            wifi.radio.enabled = True
+            
         while True:
             try:
                 print(f'Connecting to Wi-Fi {self.__ssid}...')
@@ -23,4 +26,7 @@ class Network:
                 time.sleep(5)  # Wait before retrying
 
     def is_connected(self):
-        return wifi.radio.ipv4_address == None
+        return wifi.radio.ipv4_address is not None and wifi.radio.connected
+
+    def disconnect(self):
+        wifi.radio.enabled = False

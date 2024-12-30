@@ -2,12 +2,12 @@ import adafruit_minimqtt.adafruit_minimqtt as MQTT
 import time
   
 class MqttClient:
-
+  
   def __init__(self, broker, port, topic, username, password, pool, ssl_context):
     self.__client = MQTT.MQTT(
         broker=broker,
         port=port,
-        client_id="light-sensor",
+        client_id="main_room_env",
         username=username,
         password=password,
         socket_pool=pool,
